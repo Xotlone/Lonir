@@ -3,8 +3,6 @@ import math
 DEBUG = True
 DEBUG_GUILD = 786678434922233868
 
-TOKEN = "ODkwMjM0MjQ1NTY0NDc3NDYw.YUs1Pw.yfeRFrbGu44EXpVRRdDckb7YBi4"
-
 DATABASE_SETTINGS = {
     'name': 'd7i41rqke8dj72',
     'user': 'miqfrhwtbfglqo',

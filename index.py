@@ -1,5 +1,6 @@
 import os
 import logging
+from dotenv import load_dotenv
 
 import discord
 from discord.ext import commands
@@ -7,6 +8,7 @@ from discord_slash import SlashCommand
 
 from config import CONSTANTS
 
+load_dotenv('.env')
 file_log = logging.FileHandler('lonir.log', encoding='utf-8')
 console_out = logging.StreamHandler()
 logging_level = logging.DEBUG if CONSTANTS.DEBUG else logging.INFO
@@ -21,7 +23,7 @@ log.info('Logs connected!')
 
 intents = discord.Intents.all()
 
-lonir = commands.Bot(token=CONSTANTS.TOKEN, command_prefix='/', intents=intents)
+lonir = commands.Bot(command_prefix='/', intents=intents)
 lonir.remove_command('help')
 slash = SlashCommand(lonir, sync_commands=True, sync_on_cog_reload=True)
 
@@ -32,4 +34,4 @@ for cog_name in os.listdir('./cogs'):
         log.info(f'----Cog {cog_name} loaded')
 log.info('Cogs loaded!')
 
-lonir.run(CONSTANTS.TOKEN)
+lonir.run(os.getenv('TOKEN'))
